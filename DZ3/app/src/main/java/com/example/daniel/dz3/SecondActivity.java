@@ -12,8 +12,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 public class SecondActivity extends Activity implements View.OnClickListener {
-Spinner spPrioritet;
-    EditText etTaskTitle,etTaskDescritpion;
+    Spinner spPrioritet;
+    EditText etTaskTitle, etTaskDescritpion;
     Button bAddTask;
 
 
@@ -26,33 +26,32 @@ Spinner spPrioritet;
     }
 
     private void setUpUI() {
-        spPrioritet= (Spinner) findViewById(R.id.spinner1);
-        etTaskTitle= (EditText) findViewById(R.id.etTaskTitle);
-        etTaskDescritpion= (EditText) findViewById(R.id.etTaskDescription);
-        bAddTask= (Button) findViewById(R.id.bAddTask);
+        spPrioritet = (Spinner) findViewById(R.id.spinner1);
+        etTaskTitle = (EditText) findViewById(R.id.etTaskTitle);
+        etTaskDescritpion = (EditText) findViewById(R.id.etTaskDescription);
+        bAddTask = (Button) findViewById(R.id.bAddTask);
         bAddTask.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        String NewTaskTitle,NewTaskDescription,NewTaskPrioritet;
+        String NewTaskTitle, NewTaskDescription, NewTaskPrioritet;
 
-        NewTaskTitle=etTaskTitle.getText().toString();
-        NewTaskDescription=etTaskDescritpion.getText().toString();
-        NewTaskPrioritet=spPrioritet.getSelectedItem().toString();
-        if (NewTaskTitle.isEmpty() || NewTaskDescription.isEmpty()){
+        NewTaskTitle = etTaskTitle.getText().toString();
+        NewTaskDescription = etTaskDescritpion.getText().toString();
+        NewTaskPrioritet = spPrioritet.getSelectedItem().toString();
+        if (NewTaskTitle.isEmpty() || NewTaskDescription.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Unesi podatke", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Task task=new Task(NewTaskTitle,NewTaskDescription,NewTaskPrioritet);
+        } else {
+            Task task = new Task(NewTaskTitle, NewTaskDescription, NewTaskPrioritet);
             TaskDBHelper.getInstance(getApplicationContext()).insertTask(task);
             Intent intent = new Intent();
             intent.putExtra(MainActivity.KEY_NASLOV, NewTaskTitle);
             intent.putExtra(MainActivity.KEY_OPIS, NewTaskDescription);
             intent.putExtra(MainActivity.KEY_PRIORITET, NewTaskPrioritet);
             this.setResult(RESULT_OK, intent);
-            Intent startAgain=new Intent();
-            startAgain.setClass(getApplicationContext(),MainActivity.class);
+            Intent startAgain = new Intent();
+            startAgain.setClass(getApplicationContext(), MainActivity.class);
             this.startActivity(startAgain);
             this.finish();
         }

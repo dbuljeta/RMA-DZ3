@@ -5,9 +5,9 @@ package com.example.daniel.dz3;
  */
 
 public class Task {
-private String Naslov;
-private String OpisZadatka;
-private String Prioritet;
+    private String Naslov;
+    private String OpisZadatka;
+    private String Prioritet;
 
     public Task(String naslov, String opisZadatka, String prioritet) {
         Naslov = naslov;

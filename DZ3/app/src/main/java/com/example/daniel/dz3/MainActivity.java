@@ -29,14 +29,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void setUpUI() {
-        bDodajZadatak= (Button) findViewById(R.id.bDodajZadatak);
+        bDodajZadatak = (Button) findViewById(R.id.bDodajZadatak);
         this.lvTaskList = (ListView) this.findViewById(R.id.lvTaskList);
         this.mTaskAdapter = new TaskAdapter(this.loadTasks());
         this.lvTaskList.setAdapter(this.mTaskAdapter);
         this.lvTaskList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-               Task task= (Task) lvTaskList.getItemAtPosition(position);
+                Task task = (Task) lvTaskList.getItemAtPosition(position);
                 mTaskAdapter.brisiZadatak(position);
                 TaskDBHelper.getInstance(getApplicationContext()).Delete(task);
                 return false;
@@ -47,7 +47,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
 
-
     @Override
     public void onClick(View v) {
         Intent intent = new Intent();
@@ -56,7 +55,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         this.finish();
 
     }
+
     private ArrayList<Task> loadTasks() {
         return TaskDBHelper.getInstance(this).getAllTasks();
-}
     }
+}

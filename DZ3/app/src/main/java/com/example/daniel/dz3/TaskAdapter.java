@@ -16,9 +16,11 @@ import java.util.ArrayList;
 
 class TaskAdapter extends BaseAdapter {
     private ArrayList<Task> Tasks;
-    public TaskAdapter(ArrayList<Task> tasks){
+
+    public TaskAdapter(ArrayList<Task> tasks) {
         Tasks = tasks;
     }
+
     @Override
     public int getCount() {
         return Tasks.size();
@@ -62,9 +64,11 @@ class TaskAdapter extends BaseAdapter {
         this.Tasks.add(task);
         this.notifyDataSetChanged();
     }
+
     public void brisiZadatak(int position) {
         this.Tasks.remove(position);
-        this.notifyDataSetChanged();;
+        this.notifyDataSetChanged();
+        ;
     }
 
     public static class ViewHolder {
