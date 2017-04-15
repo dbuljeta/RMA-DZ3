@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity implements View.OnClickListener {
     ListView lvTaskList;
-    TaskAdapter mTaskAdapter;
+    TaskAdapter TaskAdapter;
     Button bDodajZadatak;
     public static final String KEY_NASLOV = "KeyTittle";
     public static final String KEY_OPIS = "KeyDescription";
@@ -31,13 +31,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private void setUpUI() {
         bDodajZadatak = (Button) findViewById(R.id.bDodajZadatak);
         this.lvTaskList = (ListView) this.findViewById(R.id.lvTaskList);
-        this.mTaskAdapter = new TaskAdapter(this.loadTasks());
-        this.lvTaskList.setAdapter(this.mTaskAdapter);
+        this.TaskAdapter = new TaskAdapter(this.loadTasks());
+        this.lvTaskList.setAdapter(this.TaskAdapter);
         this.lvTaskList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Task task = (Task) lvTaskList.getItemAtPosition(position);
-                mTaskAdapter.brisiZadatak(position);
+                TaskAdapter.brisiZadatak(position);
                 TaskDBHelper.getInstance(getApplicationContext()).Delete(task);
                 return false;
             }

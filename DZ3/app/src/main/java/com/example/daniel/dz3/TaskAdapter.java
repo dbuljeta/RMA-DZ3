@@ -53,22 +53,17 @@ class TaskAdapter extends BaseAdapter {
         if (task.getPrioritet().equals("High"))
             taskViewHolder.ivPrioritet.setBackgroundColor(Color.RED);
         if (task.getPrioritet().equals("Medium"))
-            taskViewHolder.ivPrioritet.setBackgroundColor(Color.BLUE);
+            taskViewHolder.ivPrioritet.setBackgroundColor(Color.YELLOW);
         if (task.getPrioritet().equals("Low"))
             taskViewHolder.ivPrioritet.setBackgroundColor(Color.GREEN);
 
         return convertView;
     }
 
-    public void dodajZadatak(Task task) {
-        this.Tasks.add(task);
-        this.notifyDataSetChanged();
-    }
 
     public void brisiZadatak(int position) {
         this.Tasks.remove(position);
         this.notifyDataSetChanged();
-        ;
     }
 
     public static class ViewHolder {
